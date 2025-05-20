@@ -1,0 +1,26 @@
+{
+  "name": "samsung-mdc",
+  "version": "0.1.0",
+  "description": "Samsung Multiple Display Control (MDC) for Node.js",
+  "main": "index.mjs",
+  "type": "module",
+  "bin": {
+    "samsung-mdc": "./bin/index.mjs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeeJeWel/node-samsung-mdc.git"
+  },
+  "author": "Emile Nijssen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WeeJeWel/node-samsung-mdc/issues"
+  },
+  "homepage": "https://github.com/WeeJeWel/node-samsung-mdc#readme",
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
+}
