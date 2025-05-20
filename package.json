@@ -1,7 +1,8 @@
 {
   "name": "@weejewel/samsung-mdc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Samsung Multiple Display Control (MDC) for Node.js",
+  "private": false,
   "main": "index.mjs",
   "type": "module",
   "bin": {
