@@ -40,6 +40,7 @@ yargs(hideBin(process.argv))
         .option('mac', {
           required: true,
           type: 'string',
+          describe: 'MAC address',
         })
         .option('host', {
           required: true,
