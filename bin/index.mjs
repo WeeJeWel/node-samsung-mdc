@@ -76,8 +76,8 @@ yargs(hideBin(process.argv))
     builder: optionsDevice,
     handler: async (argv) => {
       const device = new Device({ ...argv });
-      const serial = await device.getSerialNumber();
-      console.log(`Serial Number: ${serial}`);
+      const serialNumber = await device.getSerialNumber();
+      console.log(serialNumber);
       await device.disconnect();
     },
   })
