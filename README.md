@@ -8,7 +8,7 @@ It can wake up the device using Wake-on-LAN, create a secure TCP-TLS connection 
 
 ### CLI
 
-```bash
+```text
 $ npm i -g @weejewel/samsung-mdc
 $ samsung-mdc --help
 samsung-mdc <command>
@@ -54,3 +54,8 @@ console.log(`Serial Number: ${serialNumber}`);
 // Disconnect
 await device.disconnect();
 ```
+
+## References
+
+* Python Library: [https://github.com/vgavro/samsung-mdc](https://github.com/vgavro/samsung-mdc)
+* MDC Calculator: [https://mdc.sesg.ch](https://mdc.sesg.ch)
