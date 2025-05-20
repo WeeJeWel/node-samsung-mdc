@@ -10,21 +10,24 @@ const optionsDevice = yargs => {
     .option('host', {
       required: true,
       type: 'string',
+      describe: 'IP address',
     })
     .option('port', {
       required: true,
       type: 'number',
       default: 1515,
+      describe: 'Port',
     })
     .option('display', {
       required: true,
       type: 'number',
       default: 0,
+      describe: 'Display ID',
     })
     .option('pin', {
       required: true,
       type: 'string',
-      default: '000000',
+      describe: 'e.g. 000000',
     });
 };
 
@@ -76,19 +79,81 @@ yargs(hideBin(process.argv))
     builder: optionsDevice,
     handler: async (argv) => {
       const device = new Device({ ...argv });
-      const serialNumber = await device.getSerialNumber();
+      const serialNumber = await device.getSerialNumber({
+        displayId: argv.display,
+      });
       console.log(serialNumber);
       await device.disconnect();
     },
   })
   .command({
-    command: 'download_content',
-    describe: `Download content from a device`,
+    command: 'get_software_version',
+    describe: `Get a device's software version`,
     builder: optionsDevice,
     handler: async (argv) => {
-      // TODO
-      console.log('download_content', argv);
+      const device = new Device({ ...argv });
+      const softwareVersion = await device.getSoftwareVersion({
+        displayId: argv.display,
+      });
+      console.log(softwareVersion);
+      await device.disconnect();
     },
   })
+  .command({
+    command: 'get_device_name',
+    describe: `Get a device's name`,
+    builder: optionsDevice,
+    handler: async (argv) => {
+      const device = new Device({ ...argv });
+      const deviceName = await device.getDeviceName({
+        displayId: argv.display,
+      });
+      console.log(deviceName);
+      await device.disconnect();
+    },
+  })
+  .command({
+    command: 'get_power_state',
+    describe: `Get a device's power state`,
+    builder: optionsDevice,
+    handler: async (argv) => {
+      const device = new Device({ ...argv });
+      const powerState = await device.getPowerState({
+        displayId: argv.display,
+      });
+      console.log(`Power State: ${powerState}`);
+      await device.disconnect();
+    },
+  })
+  .command({
+    command: 'set_content_download',
+    describe: `Set content URL. Used in EMDX E-Paper displays`,
+    builder: yargs => optionsDevice(yargs)
+      .option('url', {
+        required: true,
+        type: 'string',
+        describe: 'http://example.com/content.json',
+      }),
+    handler: async (argv) => {
+      const device = new Device({ ...argv });
+      await device.setContentDownload({
+        displayId: argv.display,
+        url: argv.url,
+      });
+    },
+  })
+  // .command({
+  //   command: 'get_battery_state',
+  //   describe: `Get a device's battery state`,
+  //   builder: optionsDevice,
+  //   handler: async (argv) => {
+  //     const device = new Device({ ...argv });
+  //     const batteryState = await device.getBatteryState({
+  //       displayId: argv.display,
+  //     });
+  //     console.log(`Battery State: ${batteryState}`);
+  //     await device.disconnect();
+  //   },
+  // })
   .demandCommand()
   .parse();
