@@ -14,9 +14,12 @@ $ samsung-mdc --help
 samsung-mdc <command>
 
 Commands:
-  samsung-mdc wakeup             Wake up a device by Wake-on-LAN
-  samsung-mdc get_serial_number  Get a device's serial number
-  samsung-mdc download_content   Download content from a device
+  samsung-mdc wakeup                Wake up a device by Wake-on-LAN
+  samsung-mdc get_serial_number     Get a device's serial number
+  samsung-mdc get_software_version  Get a device's software version
+  samsung-mdc get_device_name       Get a device's name
+  samsung-mdc get_power_state       Get a device's power state
+  samsung-mdc set_content_download  Set content URL. Used in EMDX E-Paper displays
 
 Options:
   --help     Show help                                                 [boolean]
@@ -57,5 +60,6 @@ await device.disconnect();
 
 ## References
 
+* Samsung EMDX CLI: [https://github.com/WeeJeWel/node-samsung-emdx](https://github.com/WeeJeWel/node-samsung-emdx)
 * Python Library: [https://github.com/vgavro/samsung-mdc](https://github.com/vgavro/samsung-mdc)
 * MDC Calculator: [https://mdc.sesg.ch](https://mdc.sesg.ch)
